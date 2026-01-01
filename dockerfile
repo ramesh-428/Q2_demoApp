@@ -1,9 +1,8 @@
 FROM ubuntu
-RUN apt update -y
-RUN apt install python3 -y
-RUN apt install python3-pip -y
-RUN pip3 install pandas
-RUN pip3 install os
+FROM python:3.9
+RUN apt-get update && apt-get install -y build-essential python3-dev
+RUN pip install pandas
+RUN pip install os
 RUN mkdir /app
 COPY Q2_demo_docker.py /app/
 CMD [ "bin/python3", "/app/Q2_demo_docker.py"]
